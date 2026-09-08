@@ -4,7 +4,7 @@
    INDEX, INSERT with quote-escaped string literals, and DROP. sqlite3 executes the same output in
    `bb gate` (real validation)."
   (:require [clojure.test :refer [deftest is]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [sql.core :as q]))
 
 (deftest statements

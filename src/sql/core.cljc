@@ -12,20 +12,20 @@
      [:insert :users [:id :name] [1 \"Ann\"]]        → INSERT INTO users (id, name) VALUES (1, 'Ann');
      [:drop-table :users]                          → DROP TABLE users;
    Top level: (sql stmt…)"
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- ident [x] (str/replace (name x) "-" "_"))
 
 (defn- sqltype [t]
   (if (vector? t)
-    (str (str/upper-case (ident (first t))) "(" (str/join ", " (rest t)) ")")   ;; [:varchar 255] → VARCHAR(255)
-    (str/upper-case (ident t))))
+    (str (str/upper (ident (first t))) "(" (str/join ", " (rest t)) ")")   ;; [:varchar 255] → VARCHAR(255)
+    (str/upper (ident t))))
 
 (defn- sqlval [v]
   (cond
     (string? v)  (str "'" (str/replace v "'" "''") "'")
     (boolean? v) (if v "1" "0")
-    (keyword? v) (str/upper-case (ident v))    ;; bareword: :current-timestamp → CURRENT_TIMESTAMP
+    (keyword? v) (str/upper (ident v))    ;; bareword: :current-timestamp → CURRENT_TIMESTAMP
     :else        (str v)))
 
 (defn- constraints [m]
