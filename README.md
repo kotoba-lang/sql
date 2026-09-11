@@ -7,5 +7,5 @@ The implementation lives in `sql.core`; `kotoba.sql` is provided as a compatibil
 ## Test
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
