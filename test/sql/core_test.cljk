@@ -3,7 +3,7 @@
    constraints (primary-key/not-null/unique/default/references), kebab→snake identifiers, CREATE TABLE/
    INDEX, INSERT with quote-escaped string literals, and DROP. sqlite3 executes the same output in
    `kbb -M:gate` (real validation)."
-  (:require [clojure.test :refer [deftest is]]
+  (:require [kotoba.test :refer [deftest is]]
             [kotoba.lang.text :as str]
             [sql.core :as q]))
 
